@@ -1,0 +1,10 @@
+<suite name="ParallelSuite" parallel="classes" thread-count="1">
+	<test name="AllClasses">
+		<classes>
+			<class name="com.tests.CreateAbsence" />
+			<method>
+				<exclude name="verifyHomePage" />
+			</method>
+		</classes>
+	</test>
+</suite>
