@@ -6,9 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-
+import utils.pdfUtil;
 import com.driver.DriverManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -17,6 +18,8 @@ import utils.ConfigReader;
 public class BaseTest {
 
 	protected WebDriver driver;
+	protected String imageFolderPath = System.getProperty("user.dir") + "/Screenshots/Passed";
+	
 
 	@BeforeTest
 	public void setup() {
@@ -68,4 +71,13 @@ public class BaseTest {
 		DriverManager.unload();
 	}
 
+	@AfterSuite
+	public void generatePDFReport() throws Exception {
+		String outputPath = System.getProperty("user.dir") + "/Screenshots/Create Absence/TestExecutionReport.pdf";
+		
+		
+		pdfUtil.generatePDF(imageFolderPath, outputPath);
+//		result.getTestClass().getRealClass().getSimpleName();
+
+	}
 }

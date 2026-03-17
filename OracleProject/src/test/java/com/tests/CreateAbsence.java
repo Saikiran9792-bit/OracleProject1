@@ -77,4 +77,5 @@ public class CreateAbsence extends BaseTest {
 		absencePage.enterStartdate(startdate, enddate, comment);
 
 	}
+	
 }
